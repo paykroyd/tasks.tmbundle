@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Style: Bullet 2</string>
+	<key>scope</key>
+	<string>markup.list.bullet.2</string>
+	<key>settings</key>
+	<dict/>
+	<key>uuid</key>
+	<string>B81CDE70-65A7-43FE-92A0-D418CD4D6144</string>
+</dict>
+</plist>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+require "#{ENV['TM_SUPPORT_PATH']}/lib/escape"
+
+COMPLETED = ENV['TM_BULLET_COMPLETED'] || '✓'
+
+line = ENV['TM_CURRENT_LINE'].rstrip
+list_start = line[/^\s*(\*+|-|#{Regexp.escape COMPLETED}#)/]
+
+if list_start != nil
+	list_start = list_start.lstrip
+	
+	if list_start == '-' || list_start == '✓'
+		print line
+	else
+		new_start = list_start.length == 1 ? '-' : list_start[1, list_start.length]
+		print line.sub(list_start, new_start)
+	end 
+end
+
+</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@&lt;</string>
+	<key>name</key>
+	<string>Promote Header</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>B58DD071-6E28-4932-8336-48E05E08FFB6</string>
+</dict>
+</plist>
