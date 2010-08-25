@@ -1,24 +1,23 @@
 # Tasks.tmbundle
 
-[TextMate](http://macromates.com/) bundle for simple to-do lists. Based on [TaskPaper](http://www.hogbaysoftware.com/products/taskpaper).
-
+[TextMate](http://macromates.com/) bundle for simple to-dos and notes. Based on the  [Tasks.tmbundle](http://github.com/henrik/tasks.tmbundle), which was inspired by [TaskPaper](http://www.hogbaysoftware.com/products/taskpaper). This also takes inspiration from emacs [org-mode](http://orgmode.org/). 
 
 ## Usage
 
-See the [blog post](http://henrik.nyh.se/2007/08/tasks-bundle).
+Currently supports a very simple set of syntax. 
+* prefix a line with - followed by a space to make it a task
+* there are three levels of bullets \*, \*\*, and \*\*\* each followed by a space
+* create a header by finishing the line with :
+* To toggle a task between complete and pending use Cmd-D
+* At the end of a line, hit Ctrl-Return to start the next line with the same task/bullet prefix as this line  
+* To promote or demote the header of the current (e.g., turn a ** bullet into a * bullet or vice versa) hit Cmd-< or Cmd->
 
 
 ## Installation
 
 ### Without git
 
-In a terminal:
-
-    cd /tmp
-    curl -L http://github.com/henrik/tasks.tmbundle/tarball/master > tasks.tar
-    tar xvf tasks.tar
-    mv henrik-tasks.tmbundle-* Tasks.tmbundle
-    open Tasks.tmbundle
+TODO
 
 ### With git, for hackers
 
@@ -26,10 +25,10 @@ In a terminal:
 
     mkdir -p ~/Library/Application\ Support/TextMate/Bundles
     cd ~/Library/Application\ Support/TextMate/Bundles
-    git clone git://github.com/henrik/tasks.tmbundle.git Tasks.tmbundle
+    git clone git://github.com/paykroyd/tasks.tmbundle.git Tasks.tmbundle
     osascript -e 'tell app "TextMate" to reload bundles'
 
-## Credits and license
+## Original Credits and license for tasks.tmbundle
 
 By [Henrik Nyh](http://henrik.nyh.se/) under the MIT license:
 

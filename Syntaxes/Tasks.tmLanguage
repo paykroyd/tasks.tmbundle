@@ -10,6 +10,10 @@
 		<string>tasks</string>
 		<string>todolist</string>
 	</array>
+	<key>foldingStartMarker</key>
+	<string>:$</string>
+	<key>foldingStopMarker</key>
+	<string>^\s*\n?$</string>
 	<key>keyEquivalent</key>
 	<string>^~T</string>
 	<key>name</key>
@@ -72,6 +76,96 @@
 			<string>$\n?</string>
 			<key>name</key>
 			<string>markup.list.pending.tasks</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#link</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*)(\*) </string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.whitespace.list_item.leading.bullets</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.list_item.bullets</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.paragraph.list.b1</string>
+			<key>end</key>
+			<string>$\n?</string>
+			<key>name</key>
+			<string>markup.list.bullet.1</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#link</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*)(\*{2}) </string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.whitespace.list_item.leading.bullets</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.list_item.bullets</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.paragraph.list.b2</string>
+			<key>end</key>
+			<string>$\n?</string>
+			<key>name</key>
+			<string>markup.list.bullet.2</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#link</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*)(\*{3}) </string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.whitespace.list_item.leading.bullets</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.list_item.bullets</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.paragraph.list.b3</string>
+			<key>end</key>
+			<string>$\n?</string>
+			<key>name</key>
+			<string>markup.list.bullet.3</string>
 			<key>patterns</key>
 			<array>
 				<dict>
