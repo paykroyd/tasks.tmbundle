@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+search_path = ENV['TM_PROJECT_DIRECTORY'] || ENV['TM_DIRECTORY']
+
+if search_path != nil
+	tasks = %x[grep -r -e ^[[:space:]]*-.* #{search_path}]
+	
+	tasks.each do |task_line|
+		parts = task_line.split(":");
+		if parts.length &gt; 1
+			print parts[1]
+		end
+	end
+end</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^~@a</string>
+	<key>name</key>
+	<string>Task List</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>8A55B9A6-0BAB-40F3-94EA-9A0A03A96D88</string>
+</dict>
+</plist>
