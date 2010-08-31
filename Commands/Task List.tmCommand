@@ -11,13 +11,14 @@ search_path = ENV['TM_PROJECT_DIRECTORY'] || ENV['TM_DIRECTORY']
 
 if search_path != nil
 	tasks = %x[grep -r -e ^[[:space:]]*-.* #{search_path}]
-	
+	print "&lt;ul&gt;"
 	tasks.each do |task_line|
 		parts = task_line.split(":");
 		if parts.length &gt; 1
-			print parts[1]
+			print "&lt;li&gt;" + parts[1] + "&lt;/li&gt;"
 		end
 	end
+	print "&lt;/ul&gt;"
 end</string>
 	<key>input</key>
 	<string>none</string>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+require 'rubygems'
+
+def nextDayOfWeek(dayOfWeek)
+	day = Date.today
+	day += Date.today.wday &gt; dayOfWeek ? 7 - (Date.today.wday - dayOfWeek) : dayOfWeek - Date.today.wday
+end
+
+word = ENV['TM_CURRENT_WORD'] || "today"
+
+dayOfWeek = -1
+
+if word =~ /^sun$/i
+	dayOfWeek = 0
+elsif word =~ /^mon$/i
+	dayOfWeek = 1
+elsif word =~ /^tue$/i
+	dayOfWeek = 2
+elsif word =~ /^wed$/i
+	dayOfWeek = 3
+elsif word =~ /^thu$/i
+	dayOfWeek = 4
+elsif word =~ /^fri$/i
+	dayOfWeek = 5
+elsif word =~ /^sat$/i
+	dayOfWeek = 6
+end
+
+day = Date.today
+if dayOfWeek != -1
+	day = nextDayOfWeek(dayOfWeek)
+elsif word.casecmp("tomorrow")
+	day += 1
+end
+
+print day</string>
+	<key>fallbackInput</key>
+	<string>word</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^$</string>
+	<key>name</key>
+	<string>Insert Date</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>uuid</key>
+	<string>E0FEA401-D95C-4717-9966-F957F08BF41C</string>
+</dict>
+</plist>
