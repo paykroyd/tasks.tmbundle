@@ -36,7 +36,7 @@ end
 day = Date.today
 if dayOfWeek != -1
 	day = nextDayOfWeek(dayOfWeek)
-elsif word.casecmp("tomorrow")
+elsif word =~ /^tomorrow$/
 	day += 1
 end
 
