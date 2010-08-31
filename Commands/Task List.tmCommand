@@ -7,18 +7,55 @@
 	<key>command</key>
 	<string>#!/usr/bin/env ruby
 
+require 'rubygems'
+
 search_path = ENV['TM_PROJECT_DIRECTORY'] || ENV['TM_DIRECTORY']
+
+
+def printTasks(heading, tasks)
+	unset_date = Date.new(3000,1,1)	
+	h_text = heading != unset_date ? heading.to_s : "No Due Date"
+	print "&lt;h2&gt;" + h_text + "&lt;/h2&gt;"
+	print "&lt;ul&gt;"
+	tasks.each do |task|
+		print "&lt;li&gt;" + task + "&lt;/li&gt;"
+	end
+	print "&lt;/ul&gt;"
+end
+
+def getDueDate(taskLine)
+	unset_date = Date.new(3000,1,1)	
+
+	due = taskLine[/@due\((\d{4}-\d{2}-\d{2})\)/i]
+	if due
+		due = Date.parse(due[5, 10])
+	else
+		due = unset_date
+	end
+	return due
+end
+
+
+tasksByDate = {}
 
 if search_path != nil
 	tasks = %x[grep -r -e ^[[:space:]]*-.* #{search_path}]
-	print "&lt;ul&gt;"
 	tasks.each do |task_line|
 		parts = task_line.split(":");
 		if parts.length &gt; 1
-			print "&lt;li&gt;" + parts[1] + "&lt;/li&gt;"
+			t = parts[1]
+			due = getDueDate(t)
+			unless tasksByDate[due] then tasksByDate[due] = [] end
+			tasksByDate[due].push(t)
 		end
 	end
-	print "&lt;/ul&gt;"
+end
+
+
+
+tasksByDate.keys.sort.each do |date|
+	printTasks(date, tasksByDate[date])
+	print("&lt;br/&gt;")
 end</string>
 	<key>input</key>
 	<string>none</string>
