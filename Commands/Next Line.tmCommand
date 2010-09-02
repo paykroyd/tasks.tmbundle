@@ -6,6 +6,7 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>#!/usr/bin/env ruby
+
 require "#{ENV['TM_SUPPORT_PATH']}/lib/escape"
 
 line = ENV['TM_CURRENT_LINE'].rstrip
@@ -16,7 +17,10 @@ initial_whitespace = line[/^\s*/]
 in_leading_whitespace  = (column &lt;= initial_whitespace.length)
 in_trailing_whitespace = (column &gt;= line.length)
 in_whitespace = in_leading_whitespace || in_trailing_whitespace
-list_start = line[/^\s*(\*+|-)/].lstrip
+list_start = line[/^\s*(\*+|-|✓)/] #.lstrip
+
+unless list_start == nil then list_start = list_start.lstrip end
+list_start = list_start == '✓' ? '-' : list_start
 
 print "\n" if !in_leading_whitespace &amp;&amp; !line_is_empty
 print initial_whitespace[column..-1] if in_leading_whitespace
